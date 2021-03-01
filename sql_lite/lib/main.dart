@@ -83,7 +83,7 @@ void initState(){
         child: Column(
           children: <Widget> [
             TextFormField(
-              decoration:  InputDecoration(labelText: 'Cedula'),
+              decoration:  InputDecoration(labelText: 'Cédula'),
               onSaved: (val) => setState(() => _person.identy = val),
               validator: (val)=>(val.length==0 ? 'El campo es obligatorio':null),
             ),
@@ -98,12 +98,12 @@ void initState(){
               validator: (val)=>(val.length==0 ? 'El campo es obligatorio':null),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Fecha de nacimiento'),
+              decoration: InputDecoration(labelText: 'Fecha de nacimiento (dd/mm/aaaa)'),
               onSaved: (val) => setState(() => _person.datebirth = val),
-              validator: (val)=>(val.length==0 ? 'El campo es obligatorio':null),
+              validator: (val)=>( val.length !=10 ? 'Verifique el formato dd/mm/AAAA':null),
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Discapacidad'),
+              decoration: InputDecoration(labelText: '¿Tiene alguna Discapacidad?'),
               onSaved: (val) => setState(() => _person.disability = val),
               validator: (val)=>(val.length==0 ? 'El campo es obligatorio':null),
             ),
@@ -152,8 +152,8 @@ void initState(){
                 leading: Icon(Icons.account_circle,
                 size:40
                 ),
-                title: Text(_persons[index].name.toUpperCase()),
-                subtitle: Text(_persons[index].disability.toUpperCase()),
+                title: Text(_persons[index].name.toUpperCase()+" "+_persons[index].lastname.toUpperCase()),
+                subtitle: Text("Cédula:"+_persons[index].identy.toUpperCase()+"\n"+"Fecha nacimiento:"+_persons[index].datebirth.toUpperCase()+"\n"+"Discapacidad:"+_persons[index].disability.toUpperCase()),
               ),
               Divider(height: 5.0,)
             ],
